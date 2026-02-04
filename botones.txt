@@ -1,0 +1,62 @@
+    
+    public mapaSpaceColony(mapaSpaceColony[][] mapaColony) {
+        this.mapaSpace = mapaColony;
+        this.botonFilaColumna = mapaColony.length;
+        this.setMinimumSize(new Dimension(33, 9));
+        this.setBackground(new java.awt.Color(255, 255, 255));
+        this.setFont(new java.awt.Font("Tahoma", 1, 12));
+        this.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent evt) {
+                celdaActionPerformed(evt);
+            }
+        });
+    }
+    
+    private void celdaActionPerformed(MouseEvent evt) {
+        JButton botonPresionado = (JButton) evt.getSource();
+        int posicionFila = -1;
+        int posicionColumna = -1;
+        for (int i = 0; i < botonFilaColumna; i++) {
+            for (int j = 0; j < botonFilaColumna; j++) {
+                if (mapaSpace[i][j] == botonPresionado) {
+                    System.out.println("Botón presionado en: [" + i + "][" + j + "]");
+                    posicionFila = i;
+                    posicionColumna = j;
+                    break;
+                }
+            }
+            if (posicionFila != -1) {
+                break;
+            }
+        }
+        switch (evt.getButton()) {
+            case MouseEvent.BUTTON1:
+                System.out.println("HOALAANUMDO");
+                break;
+            case MouseEvent.BUTTON3:
+                System.out.println("Intenta de nuevio" + posicionFila + "  " + posicionColumna);
+                break;
+            case MouseEvent.BUTTON2:
+                JOptionPane.showMessageDialog(null, "Opcion invalida, vuelva a intentar");
+                break;
+        }
+    }
+    
+    
+    //        JButton botonPresionado = (JButton) evt.getSource();
+//        int posicionFila = -1;
+//        int posicionColumna = -1;
+//        for (int i = 0; i < mapaSpace.length; i++) {
+//            for (int j = 0; j < mapaSpace.length; j++) {
+//                if (mapaSpace[i][j] == botonPresionado) {
+//                    System.out.println("Botón presionado en: [" + i + "][" + j + "]");
+//                    posicionFila = i;
+//                    posicionColumna = j;
+//                    break;
+//                }	
+//            }
+//            if (posicionFila != -1) {
+//                break;
+//            }
+//        }
